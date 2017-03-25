@@ -20,4 +20,19 @@ def add_entry(name, phone_number, email)
      # #11 we insert a new entry into entries using the calculated `index.
      entries.insert(index, Entry.new(name, phone_number, email))
    end
+
+def remove_entry(name, phone_number, email)
+     # create a variable to store the entry to be deleted
+     delete_entry = nil
+
+     # loop over every entry in the address book
+     entries.each do |entry|
+       if name == entry.name && phone_number == entry.phone_number && email == entry.email
+        delete_entry = entry
+       end
+     end
+
+     # delete entry from entry array
+     entries.delete(delete_entry)
+   end
  end
