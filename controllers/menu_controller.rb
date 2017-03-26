@@ -15,7 +15,8 @@
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - View Entry Number n"
+     puts "6 - Exit"
      print "Enter your selection: "
 
      # #3 retrieve user input from the command line using gets. gets reads the next line from standard input.
@@ -40,6 +41,10 @@
        read_csv
        main_menu
      when 5
+       system "clear"
+       entry_n_submenu
+       main_menu
+     when 6
        puts "Good-bye!"
          # #8 terminate the program using exit(0)
          exit(0)
@@ -51,19 +56,35 @@
      end
    end
 
-   # #10  stub the rest of the methods called in main_menu
-   def view_all_entries
-    # #14 iterate through all entries in AddressBook using each
-    address_book.entries.each do |entry|
-     system "clear"
-     puts entry.to_s
-     # #15 call entry_submenu to display a submenu for each entry
-     entry_submenu(entry)
-   end
+    # #10  stub the rest of the methods called in main_menu
+    def view_all_entries
+      # #14 iterate through all entries in AddressBook using each
+      address_book.entries.each do |entry|
+        system "clear"
+        puts entry.to_s
+      # #15 call entry_submenu to display a submenu for each entry
+      entry_submenu(entry)
+      end
 
-   system "clear"
-   puts "End of entries"
- end
+      system "clear"
+      puts "End of entries"
+    end
+
+    def entry_n_submenu
+      print "Entry number to view: "
+      selection = gets.chomp.to_i
+
+      if selection < address_book.entries.count
+        puts address_book.entries[selection]
+        puts "Press enter to return to the main menu"
+        gets.chomp
+        system = "clear"
+      else
+        puts "#{ selection } is not a valid input"
+        entry_n_submenu
+      end
+    end
+
 
  def create_entry
     # #11 clear the screen for before displaying the create entry prompts
