@@ -85,7 +85,6 @@
     end
   end
 
-
   def create_entry
     # #11 clear the screen for before displaying the create entry prompts
     system "clear"
@@ -106,8 +105,10 @@
 
   def search_entries
   end
+
   def read_csv
   end
+
   def entry_submenu(entry)
     # #16 display the submenu options
     puts "n - next entry"
@@ -117,7 +118,7 @@
     # #17 chomp removes any trailing whitespace from the string gets returns
     selection = gets.chomp
     case selection
-    # #18 when the user asks to see the next entry, we can do nothing andcontrol will be returned to view_all_entries
+    # #18 when the user asks to see the next entry, we can do nothing and control will be returned to view_all_entries
     when "n"
     # #19 we'll handle deleting and editing in another checkpoint, for now theuser will be shown the next entry
     when "d"
