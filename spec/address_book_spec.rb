@@ -11,6 +11,17 @@ RSpec.describe AddressBook do
 		expect(entry.email).to eq expected_email
 	end
 
+	context "#nuke" do 
+		it "should delete all entries" do 
+			book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+			book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+			book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+
+			book.nuke
+			expect(book.entries.size).to eq(0)
+		end
+	end
+
 	# #2 we see describe and it statements which are an RSpec paradigm to explain what we are testing. it explains the functionality of the method we're testing in a human readable form. RSpec will take the content from describe and  it and output them nicely to the command line when we execute the test.
 	describe "attributes" do
 		it "responds to entries" do
